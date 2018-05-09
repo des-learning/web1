@@ -1,0 +1,9 @@
+https://www.uph.edu/medan/news?q=system_information#today
+
+URL -> Universal Resource Locator
+https:// -> scheme/protocol
+www.uph.edu -> host
+/medan/ PATH
+/news -> document/resource
+?q=system_information -> query
+#today -> fragment
