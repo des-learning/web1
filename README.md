@@ -21,7 +21,7 @@ Materi kuliah pemrograman Web I
         Image
         Audio and Video
         Table
-        Frame & Iframe
+        IFrame
         Form
 04. CSS
     Pengenalan CSS
