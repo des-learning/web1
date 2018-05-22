@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <form method="get" action="https://www.google.com">
+    <span>
+      <label for="q">Query</label>
+      <input id="q" type="text" name="q">
+    </span>
+    <span>
+      <button type="submit">Send</button>
+      <input type="reset" value="Clear">
+    </span>
+  </form>
+  <form>
+    <div>
+      <input type="number" placeholder="Masukkan angka">
+      <input type="date">
+      <input type="time">
+      <input type="email">
+    </div>
+    <div>
+      <input type="radio" name="jenis_kelamin" value="pria" checked> Pria<br>
+      <input type="radio" name="jenis_kelamin" value="wanita"> Wanita<br>
+    </div>
+    <div>
+      <input type="checkbox" name="hobi" value="makan" checked> Makan<br>
+      <input type="checkbox" name="hobi" value="tidur"> Tidur<br>
+      <input type="checkbox" name="hobi" value="traveling"> Traveling<br>
+    </div>
+    <div>
+      <select name="pendidikan" size="5" multiple>
+        <option value="sd">SD</option>
+        <option value="smp">SMP</option>
+        <option value="sma">SMA</option>
+      </select>
+    </div>
+    <div>
+    <div>
+      <textarea name="comment" placeholder="Isi komentar" cols="100" rows="10"></textarea>
+    </div>
+    <div>
+      <input type="file" name="berkas" accept=".jpg, .png">
+    </div>
+  </form>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+<style>
+nav ul { list-style-type: none; }
+nav ul li { float: left; padding: 1em; }
+nav ul li:hover { background-color: yellow; }
+ul.sub { display: none; }
+</style>
+</head>
+<body>
+  <nav id="navigasi">
+    <ul class="nav">
+      <li onclick="showmenu(this)">Menu 1
+        <ul class="sub">
+          <li>Sub menu 1</li>
+          <li>Sub menu 2</li>
+          <li>Sub menu 3</li>
+        </ul>
+      </li>
+      <li>Menu 2</li>
+      <li>Menu 3</li>
+    </ul>
+  </nav>
+  <script>
+    function showmenu(obj) {
+      if (obj.firstElementChild.style.display === "none") {
+        obj.firstElementChild.style.display = "block";
+      } else {
+        obj.firstElementChild.style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>

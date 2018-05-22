@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+<style>
+div.main { height: 100%; width: 100%; }
+div.top { background-color: yellow; }
+div.content { height: 600px; width: 100%; }
+div.sidebar { float: left; width: 20%; height: 100%; display: fixed; background-color: green }
+div.main_content { float: left; width: *; background-color: cyan; }
+footer { clear: both; }
+</style>
+</head>
+<body>
+  <div class="main">
+    <div class="top">
+      <p>top navigation</p>
+    </div>
+    <div class="content">
+      <div class="sidebar">
+        <p>Side bar</p>
+      </div>
+      <div class="main_content">
+        <p>Main content</p>
+      </div>
+    </div>
+    <footer>
+      <p>Footer</p>
+    </footer>
+  </div>
+</body>
+</html>
