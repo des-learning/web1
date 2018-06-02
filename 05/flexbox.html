@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    /* div { display: none; } */
+    /* div p {
+      visibility: hidden;
+    } */
+    div {
+      border: 1px solid black;
+      display: flex;
+      flex-direction: row;
+      width: 500px;
+      flex-wrap: wrap;
+      align-items: flex-end;
+    }
+    div p {
+      border: 1px solid red;
+      flex-basis: 200px;
+    }
+  </style>
+</head>
+<body>
+  <div>
+    <p style="flex-grow: 1">Paragraf I</p>
+    <p style="flex-grow: 3">Paragraf II</p>
+    <p style="flex-grow: 2">Paragraf III</p>
+  </div>
+  <p>Paragraf IV</p>
+</body>
+</html>
