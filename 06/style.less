@@ -1,0 +1,21 @@
+@text-color: #B80C12; //#424242;
+@bg-color: #FFFE75; //#cfffae;
+@font-size: 32px;
+@header-font-size: if((3*@font-size > 80px), 64px, 3*@font-size);
+@header-font-color: overlay(@text-color, @bg-color);
+//@header-font-color: @text-color;
+
+p { color: @text-color; }
+body { background-color: @bg-color; }
+h1 { font-size: @header-font-size; color: @header-font-color; }
+p { font-size: @font-size; }
+
+@media (min-width: 970px) {
+  @font-size: 24px;
+  @header-font-size: 3*@font-size;
+  @bg-color: #cfffae;
+  h1 { font-size: @header-font-size; color: @header-font-color; }
+  p { font-size: @font-size; }
+  body { background-color: @bg-color; }
+}
+
