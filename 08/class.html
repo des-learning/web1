@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    var dis = (s) => { document.write("<p>" + s + "</p>") }
+    // class
+    class Manusia {
+      // constructor
+      constructor(nama, jenisKelamin) {
+        this.nama = nama
+        this.jenisKelamin = jenisKelamin
+      }
+
+      // method
+      hello(manusiaLain) {
+        dis(this.nama + ": hello, " + manusiaLain.nama)
+      }
+
+      // getter
+      get info() {
+        return "nama: " + this.nama + ", kelamin: " + this.jenisKelamin
+      }
+
+      // setter
+      set info(value) {
+        this.nama = value.nama
+        this.jenisKelamin = value.kelamin
+      }
+    }
+
+    var budi = new Manusia("Budi", "pria")
+    var susi = new Manusia("Susi", "wanita")
+    budi.hello(susi)
+    dis(budi.info)
+    dis(susi.info)
+    budi.info = {nama: "Andi", kelamin: "pria"} // object
+    dis(budi.info)
+
+    Manusia.prototype.introduce = function () { dis("Hello, saya " + this.nama) }
+
+    budi.introduce()
+  </script>
+</body>
+</html>

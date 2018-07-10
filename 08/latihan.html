@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    class Kontak {
+      constructor(nama, alamat, telepon) {
+        this.nama = nama
+        this.alamat = alamat
+        this.telepon = telepon
+      }
+    }
+
+    var data = [new Kontak("Budi", "Jl. Asia", "1234567"),
+                new Kontak("Rudi", "Jl. Pandu", "1234567"),
+                new Kontak("Susi", "Jl. Thamrin", "1234567")]
+    // your code here
+    document.write('<table border="1">')
+    document.write("<tr><td>Nama</td><td>Alamat</td><td>Telepon</td></tr>")
+    for (i = 0; i < data.length; i++) {
+      //document.write("<tr><td>" + data[i].nama + "</td><td>" + data[i].alamat +
+      //               "</td><td>" + data[i].telepon + "</td></tr>")
+      baris(data[i])
+    }
+    //data.forEach(d => baris(d))
+    document.write("</table>")
+
+    function baris(d) {
+      document.write("<tr><td>" + d.nama + "</td><td>" + d.alamat +
+                     "</td><td>" + d.telepon + "</td></tr>")
+    }
+  </script>
+</body>
+</html>

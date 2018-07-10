@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <input type="text" id="text" placeholder="type text here">
+  <input type="text" id="regex" placeholder="type regex here">
+  <button onclick="match()">Match</button>
+  <div id="output"></div>
+  <script type="text/javascript">
+    function match() {
+      var text = document.getElementById("text").value
+      var regex = document.getElementById("regex").value
+      // var re = new RegExp(regex, "gi")
+      var re = /^[a-z]+$/gi  // match text yang terdiri dari minimal 1 a-z
+      var output = document.getElementById("output")
+
+      output.innerHTML = re.test(text)
+    }
+  </script>
+</body>
+</html>
