@@ -14,7 +14,7 @@
     <input type="number" name="nilai" id="nilai">
   </div>
   <div>
-    <button>Simpan</button>
+    <button onclick="simpan()">Simpan</button>
   </div>
   <table id="daftarNilai" border="1">
     <tr>
@@ -24,6 +24,70 @@
     </tr>
   </table>
   <script type="text/javascript">
+    class Nilai {
+      constructor(nama, nilai) {
+        this.nama = nama
+        this.nilai = nilai
+      }
+
+      get nilaiHuruf() {
+        if (this.nilai >= 80) {
+          return "A"
+        } else if (this.nilai >= 70) {
+          return "B"
+        } else if (this.nilai >= 60) {
+          return "C"
+        } else if (this.nilai >= 50) {
+          return "D"
+        } else {
+          return "E"
+        }
+      }
+    }
+
+    function bacaDataDariInput() {
+      var inama = document.getElementById("nama")
+      var inilai = document.getElementById("nilai")
+      var nama = inama.value
+      var nilai = parseInt(inilai.value)
+      nilai = isNaN(nilai) ? 0 : nilai
+
+      return new Nilai(nama, nilai)
+    }
+
+    function buatKolomBaru(n) {
+      var kolom = document.createElement("td")
+      kolom.innerHTML = n
+      return kolom
+    }
+
+    function buatBarisBaru(n) {
+      var baris = document.createElement("tr")
+      baris.appendChild(buatKolomBaru(n.nama))
+      baris.appendChild(buatKolomBaru(n.nilai))
+      baris.appendChild(buatKolomBaru(n.nilaiHuruf))
+      return baris
+    }
+
+    function clearDanFokusInput() {
+      var inama = document.getElementById("nama")
+      var inilai = document.getElementById("nilai")
+      inama.value = ""
+      inilai.value = ""
+      inama.focus()
+    }
+
+    function simpan() {
+      // baca data dari input
+      var n = bacaDataDariInput()
+      // bentuk element baru
+      var baris = buatBarisBaru(n)
+      // tambahkan element baru ke table
+      var table = document.getElementById("daftarNilai")
+      table.appendChild(baris)
+      // clear dan focus input
+      clearDanFokusInput()
+    }
   </script>
 </body>
 </html>
