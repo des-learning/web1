@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <ul>
+    <li>Item 1</li>
+    <li><a href="https://google.com">Google</a></li>
+    <li>Item 2</li>
+  </ul>
+  <script type="text/javascript">
+    // document.title = "Hello from DOM"
+    document.head.children[1].innerHTML = "Hello from DOM"
+    //document.write(document.body.children[0].innerHTML)
+    //document.write(document.body.children[0].children[1].children[0].innerHTML)
+    document.body.children[0].children[2].innerHTML = "<a href=\"facebook.com\">Facebook</a>"
+  </script>
+</body>
+</html>

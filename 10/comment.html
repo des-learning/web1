@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <textarea name="comment" id="comment" placeholder="Type your comment here"></textarea>
+  <div id="commentCount"></div>
+  <button type="button" onclick="submitComment()">Submit</button>
+  <!--<ul id="comments">
+  </ul>-->
+  <div id="comments"></div>
+  <script type="text/javascript">
+    function submitComment() {
+      // ambil value komentar
+      var comment = document.getElementById("comment")
+      if (comment.value !== '') {
+        // bentuk li baru
+        var li = document.createElement("h1")
+        li.innerHTML = comment.value
+        // tambahkan li baru ke ul
+        var ul = document.getElementById("comments")
+        ul.appendChild(li)
+        // kosongkan textarea comment
+        comment.value = ""
+        comment.focus()
+        // isikan commentCount
+        var commentCount = document.getElementById("commentCount")
+        commentCount.innerHTML = ul.children.length + " comment(s)"
+
+
+        // tombol untuk hapus
+        li.appendChild(createDeleteFunction(ul, li))
+      }
+
+      // closure
+      function createDeleteFunction(parent, node) {
+        var button = document.createElement("button")
+        button.innerHTML = "DELETE"
+        button.onclick = 
+        function () {
+          parent.removeChild(node)
+          document.getElementById("commentCount").innerHTML = parent.children.length + " comment(s)"
+        }
+
+        return button
+      }
+    }
+  </script>
+</body>
+</html>
