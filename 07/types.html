@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    function dis(x) {
+      document.write("<p>" + x + "</p>")
+    }
+    dis("string")
+    dis('string')
+    dis('Dia bilang "hello"')
+    dis("Dia bilang 'hello'")
+    dis("Dia bilang \"hello\"")
+    dis(2)
+    dis(2.7)
+    dis(2e10) // exponen
+    dis(0xff) // hexa
+    dis(0o10) // octal
+    dis(1e-2)
+    dis(true)
+    dis(false)
+    dis(null)
+    dis([1,2,3])
+    dis({nama: 'Budi', umur: 20, jenisKelamin: 'pria'})
+    a = [{nama: 'Budi', umur: 20, telepon: ['123', '456']},
+         {nama: 'Agus', umur: 25, telepon: ['123', '456']}]
+    dis(a)
+    dis(a[0].nama)
+    dis(a[0]['umur'])
+    dis(a[1].telepon)
+    dis(a[1].telepon[0])
+    dis(2**3) // pangkat
+    dis(5%3)
+    dis(5%0)
+    dis(5/0)
+    dis(1 + parseInt("1"))
+    dis(1 - parseInt("1"))
+    dis(parseFloat("1.7") + 2)
+    dis(parseInt("a"))
+    a = 1 + "1" / 2
+    dis(typeof a)
+    a = 5 % 2 == 0 ? "genap" : "ganjil"
+    if (5 % 2 == 0) {
+      a = "genap"
+    } else {
+      a = "ganjil"
+    }
+    dis(1 == "1")   // true
+    dis(1 === "1")  // false, karena yang dibandingkan adalah number dan string
+    dis(1 === 1)
+    dis(1 !== 1) // false
+    dis(1 != "1") // false
+    dis(1 !== "1") // true
+    dis(1 !== 1 && 2 !== 2)
+    dis(1 !== 1 || 2 !== 2)
+    dis(! (1 !== 1) || 2 !== 2)
+    dis(1 in [1,2,3])
+    dis(! (1 in [1,2,3]))
+    a = [1,2,3]
+    for (i in a) {
+      dis(i + ":" + a[i])
+    }
+    for (i = 0; i < a.length; i++) {
+      dis(i + ":" + a[i])
+    }
+    for (i of a) {
+      dis(i)
+    }
+  </script>
+</body>
+</html>

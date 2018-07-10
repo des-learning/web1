@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    function dis(x) {
+      document.write("<p>" + x + "</p>")
+    }
+    // array
+    var a // deklarasikan variable a, nilainya masih undefined
+    dis(a) // undefined
+    dis("hello") // hello
+
+    a = new Array(1,2,3)
+    a = Array(1,2,3)
+    a = [1,2,3]
+
+    dis("a.length: " + a.length)
+    for (i = 0; i < a.length; i++) { // for (i in a) {
+      dis(i + ": " + a[i])
+    }
+    for (i of a) {
+      dis(i)
+    }
+    a[10] = 4
+    dis("a.length: " + a.length)
+    for (i = 0; i < a.length; i++) {
+      dis(i + ": " + a[i])
+    }
+    /* delete a[0]
+    dis(a[0])
+    delete a
+    dis(a)
+    a = null
+    dis(a) */
+    a.push(7)
+    for (i = 0; i < a.length; i++) {
+      dis(i + ": " + a[i])
+    }
+    n = a.pop() // 7
+    for (i = 0; i < a.length; i++) {
+      dis(i + ": " + a[i])
+    }
+    // urutkan
+    a.sort()
+    for (i = 0; i < a.length; i++) {
+      dis(i + ": " + a[i])
+    }
+
+    // map
+    a = new Map()
+    a.set('budi', 20)
+    a.set('agus', 25)
+
+    /* var iter = a.keys()
+    while(i = iter.next().value) {
+      dis(i + ": " + a.get(i))
+    } */
+    for (i of a.keys()) {
+      dis(i + ": " + a.get(i))
+    }
+
+    for (i of a.values()) {
+      dis(i)
+    }
+
+    dis("map: ")
+    for (i of a) {
+      dis(i)
+    }
+
+    // set
+    var a = new Set()
+    a.add('Budi')
+    a.add('Agus')
+    a.add('Iwan')
+    a.add('Budi')
+
+    for (i of a) {
+      dis(i)
+    }
+
+    var b = [1,2,2,4,65,2,3,4,6,87]
+    var c = new Set(b)
+    dis(c.size)
+    for (i of c) {
+      dis(i)
+    }
+  </script>
+</body>
+</html>

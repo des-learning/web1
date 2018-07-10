@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <script type="text/javascript">
+    function hello(nama) {
+      var n = nama === undefined ? "world" : nama
+      return "Hello " + n
+    }
+
+    function dis(x) {
+      document.write("<p>" + x + "</p>")
+    }
+
+    dis(hello("budi"))
+    dis(hello())
+
+    function sum(...x) { // variadic parameter
+      var total = 0
+      for (i of x)
+        total += i
+      return total
+    }
+
+    dis(sum(1,5))
+    dis(sum(1,4,6,7,3,9,20,30))
+    dis(sum(...[1,2,3])) // spread operator
+    dis(sum([1,2,3])) // spread operator
+
+    // anonymous function/lambda
+    var sum1 = function (x, y) {
+      return x + y
+    }
+    dis(sum1(1,2))
+
+    // arrow function
+    var sum2 = (x, y) => x + y
+    dis(sum2(3,4))
+
+    var even = (n) => {
+      if (n % 2 == 0)
+        return "even"
+      else
+        return "odd"
+    }
+
+    dis(3 + ": " + even(3))
+
+    a = [1,2,3]
+    a.forEach(x => {
+      dis(x * 10)
+    })
+    a.forEach(function (x) {
+      dis(x * 10)
+    })
+    a = [1,3,4,5,7,8,9,3,4,6,7,9,10]
+    // menampilkan seluruh data genap dari array a
+    for (i = 0; i < a.length; i++) {
+      if (a[i] % 2 == 0) {
+        dis(a[i])
+      }
+    }
+    var b = a.filter(x => x > 5)
+    var c = b.map(x => (x + ": " + (x % 2 == 0 ? "genap" : "ganjil")))
+    c.forEach(x => dis(x))
+
+
+    a = new Map()
+    a.set('Budi', 20)
+    a.set('Agus', 30)
+    a.set('Iwan', 20)
+    a.set('Susi', 5)
+
+    Array.from(a.entries())
+      .filter((x, i) => x[1] > 20)
+      .forEach(x => dis(x))
+
+    // closure
+    function kali(n) {
+      function f(x) {
+        return x * n
+      }
+
+      return f
+    }
+
+    var kali10 = kali(10)
+    dis(kali10(5))
+    dis(kali(100)(5))
+  </script>
+</body>
+</html>
