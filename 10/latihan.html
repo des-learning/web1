@@ -77,14 +77,17 @@
       inama.focus()
     }
 
+    function tambahkanBarisBaru(id, baris) {
+      document.querySelector(id).appendChild(baris)
+    }
+
     function simpan() {
       // baca data dari input
       var n = bacaDataDariInput()
       // bentuk element baru
       var baris = buatBarisBaru(n)
       // tambahkan element baru ke table
-      var table = document.getElementById("daftarNilai")
-      table.appendChild(baris)
+      tambahkanBarisBaru('#daftarNilai', baris)
       // clear dan focus input
       clearDanFokusInput()
     }
