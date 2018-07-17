@@ -1,0 +1,2 @@
+Daftar url public API:
+https://github.com/toddmotto/public-apis

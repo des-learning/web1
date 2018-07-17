@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <button onclick="fetch_image()">Fetch</button>
+  <div id="output"></div>
+  <script type="text/javascript">
+    function fetch_image() {
+      var ajax = new XMLHttpRequest()
+      var output = document.getElementById("output")
+
+      // callback function setiap terjadi perubahan
+      // state request ajax
+      ajax.onreadystatechange = function() {
+        /* output.innerHTML = "<p>Ready state: " + ajax.readyState + "</p>" 
+          + "<p>Status: " + ajax.status + "</p>"
+          + "<p>Status Text: " + ajax.statusText + "</p>"
+          + "<p>Response Text: " + ajax.responseText + "</p>" */
+        if (ajax.readyState === 4) {
+          if (ajax.status === 200) {
+            var json = JSON.parse(ajax.responseText)
+            var image = "<img src=\"" + json.message + "\">"
+            output.innerHTML = "<p> " + ajax.responseText + "</p>" + image
+          } else {
+            output.innerHTML = ajax.statusText
+          }
+        } else {
+          output.innerHTML = "loading..."
+        }
+      }
+
+      ajax.open("get", "https://dog.ceo/api/breeds/image/random", true)
+      ajax.send()
+    }
+  </script>
+</body>
+</html>

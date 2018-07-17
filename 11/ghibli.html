@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="message"></div>
+  <input type="text" id="title" placeholder="Title">
+  <input type="text" id="producer" placeholder="Producer">
+  <button onclick="search_film()">Search</button>
+  <table id="table">
+    <thead>
+      <tr>
+        <th>Title</th><th>Description</th><th>Director</th>
+        <th>Producer</th><th>Release Date</th><th>Rotten Tomatoes Score</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+  <script type="text/javascript">
+    const url = "https://ghibliapi.herokuapp.com"
+    var films = []
+    function fetch_films() {
+      fetch(url + "/films")
+        .then(res => {
+          return res.json()
+        }).then(json => {
+          films = json
+          message("Films loaded")
+          search_film()
+        }).catch(err => {
+          message("Something happened")
+        })
+    }
+
+    function message(msg) {
+      document.getElementById("message").innerHTML = msg
+    }
+
+    function search_film() {
+      var title = document.getElementById("title").value
+      var producer = document.getElementById("producer").value
+      var fs = title === "" ? films : films.filter(x => x.title.toLowerCase().includes(title))
+      fs = producer === "" ? fs : fs.filter(x => x.producer.toLowerCase().includes(producer))
+      render_films(fs)
+    }
+
+    function render_films(fs) {
+      var table = document.getElementById("table")
+      table.tBodies[0].innerHTML = ""
+      fs.forEach(f => {
+        var tr = document.createElement("tr")
+        tr.innerHTML = "<td>" + f.title + "</td>"
+          + "<td>" + f.description + "</td>"
+          + "<td>" + f.director + "</td>"
+          + "<td>" + f.producer + "</td>"
+          + "<td>" + f.release_date + "</td>"
+          + "<td>" + f.rt_score + "</td>"
+        table.tBodies[0].appendChild(tr)
+      })
+    }
+    fetch_films()
+  </script>
+</body>
+</html>

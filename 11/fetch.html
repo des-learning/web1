@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <button onclick="fetch_image()">Fetch</button>
+  <div id="output"></div>
+  <script type="text/javascript">
+    function fetch_image() {
+      var url = "https://dog.ceo/api/breeds/image/random"
+      var output = document.getElementById("output")
+      output.innerHTML = "Loading"
+      fetch(url)
+        .then(function(response) {
+          if (response.status !== 200) {
+            throw new Error(response.statusText)
+          } else {
+            return response.json()
+          }
+        }).then(function(json) {
+          output.innerHTML = '<img src="' + json.message + '">'
+        }).catch(function(err) {
+          output.innerHTML = err.message
+        })
+    }
+  </script>
+</body>
