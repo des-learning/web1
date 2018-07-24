@@ -8,6 +8,11 @@
   <div id="message"></div>
   <input type="text" id="title" placeholder="Title">
   <input type="text" id="producer" placeholder="Producer">
+  <select id="comparator">
+    <option value="ge" selected>&gt;=</option>
+    <option value="le">&lt;=</option>
+  </select>
+  <input type="text" id="year" placeholder="Year">
   <button onclick="search_film()">Search</button>
   <table id="table">
     <thead>
@@ -41,8 +46,11 @@
     function search_film() {
       var title = document.getElementById("title").value
       var producer = document.getElementById("producer").value
+      var year = parseInt( document.getElementById("year").value )
+      var comparator = document.getElementById("comparator").value
       var fs = title === "" ? films : films.filter(x => x.title.toLowerCase().includes(title))
       fs = producer === "" ? fs : fs.filter(x => x.producer.toLowerCase().includes(producer))
+      fs = isNaN(year) ? fs : fs.filter(x => comparator === "ge" ? parseInt(x.release_date) >= year : parseInt(x.release_date) <= year)
       render_films(fs)
     }
 
