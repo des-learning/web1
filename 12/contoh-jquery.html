@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <input type="text" id="nama">
+  <button type="button" id="tombol">klik</button>
+  <div id="output"></div>
+  <script type="text/javascript" src="jquery-3.3.1.min.js"></script>
+  <script type="text/javascript">
+    var nama = jQuery("#nama")
+    var button = $("#tombol")
+    var output = $("#output")
+
+    /* button.on("click", function(event) {
+      output.html("Hello, " + nama.val() === "" ? "world" : nama.val())
+      nama.val("")
+      nama.focus()
+    }) */
+    nama.on("keyup", function(event) {
+      output.html("Hello, " + nama.val())
+    })
+
+  /* versi dom js vanilla
+    var nama = document.getElementById("nama")
+    var button = document.getElementById("tombol")
+    var output = document.getElementById("output")
+
+    button.onclick = function(event) {
+      output.innerHTML = "Hello, " + nama.value === "" ? "world": nama.value
+      nama.value = ""
+      nama.focus()
+    }
+  */
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+  <link rel="stylesheet" href="/resources/demos/style.css">
+  <style>
+    .hidden { display: none; }
+  </style>
+</head>
+<body>
+  <div id="accordion">
+    <h3>Section 1</h3>
+    <div>
+      <p>Isi Section 1</p>
+    </div>
+    <h3>Section 2</h3>
+    <div>
+      <p>Isi Section 2<p>
+    </div>
+    <h3>Section 3</h3>
+    <div>
+      <p>Isi Section 3<p>
+    </div>
+    <h3>Section 4</h3>
+    <div>
+      <p>Isi Section 4<p>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+  <script type="text/javascript">
+    function accordion(selector) {
+      var titles = $(selector).children('h3')
+      var contents = $(selector).children('div')
+      contents.addClass('hidden')
+      contents.append($(document.createElement("img")).attr('src', 'https://jquery.com/jquery-wp-content/themes/jquery/content/donate.png'))
+      titles.on('click', function(event) {
+        contents.addClass('hidden')
+        $(event.target).next().toggleClass('hidden')
+      })
+    }
+    accordion('#accordion')
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <input type="text" v-model="name">
+    <!--<input type="text" v-value="name" v-on:input="(event) => name = event.target.value">-->
+    <button v-on:click="hello">Klik</button>
+    <h1>{{message}}</h1>
+  </div>
+  <div><h1>Ini adalah HTML biasa tanpa aplikasi vue</h1></html>
+  <div id="app1">
+    <h1>{{message}}</h1>
+  </div>
+
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript">
+    var app = new Vue({
+      el: '#app',
+      data: {
+        message: 'Hello World',
+        name: ''
+      },
+      methods: {
+        hello: function(event) {
+          this.message = 'Hello, ' + this.name
+          this.name = ''
+          event.target.focus()
+        }
+      }
+    })
+
+    var app1 = new Vue({
+      el: '#app1',
+      data: {
+        message: 'Bye-bye world'
+      }
+    })
+  </script>
+</body>
+</html>
