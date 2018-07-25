@@ -11,9 +11,12 @@
     <judul-a><p>Testing vuejs component</p></judul-a>
     <counter-button skip="1"></counter-button>
     <counter-button skip="3"></counter-button>
-    <my-table v-bind:columns="columns" v-bind:rows="rows"></my-table>
+    <my-table :columns="columns" v-bind:rows="rows" @tekan="dataClicked"></my-table>
+    <button @click="tambah">Tambah</button>
     <my-table v-bind:columns="['nama', 'nilai']"
               v-bind:rows="[{nama: 'Budi', nilai: 90}, {nama: 'Agus', nilai: 70}]"></my-table>
+
+    <gambar v-for="g in gambars" v-bind:src="g.src" v-bind:caption="g.caption"></gambar>
   </div>
 
   <script type="text/javascript" src="vue.js"></script>
@@ -45,6 +48,15 @@
       }
     })
 
+    Vue.component('gambar', {
+      props: ['caption', 'src'],
+      template: '\
+      <div>\
+        <img v-bind:src="src">\
+        <p>{{caption}}</p>\
+      </div>'
+    })
+
     var app = new Vue({
       el: '#app',
       components: {
@@ -54,7 +66,21 @@
         columns: ['nama', 'alamat'],
         rows: [{nama: 'Budi', alamat: 'Jl. Asia'},
                {nama: 'Agus', alamat: 'Jl. Pandu'},
-               {nama: 'Iwan', alamat: 'Jl. Thamrin'}]
+               {nama: 'Iwan', alamat: 'Jl. Thamrin'}],
+        gambars: [
+          { src: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+            caption: 'Logo Google' },
+          { src: 'https://vuejs.org/images/logo.png?_sw-precache=cf23526f451784ff137f161b8fe18d5a',
+            caption: 'Logo Vue.js' }
+          ]
+      },
+      methods: {
+        tambah: function(event) {
+          this.rows.push({nama: 'Susi', alamat: 'Jl. Gatsu'})
+        },
+        dataClicked: function(event) {
+          alert(event.data.nama + ' is clicked')
+        }
       }
     })
   </script>
