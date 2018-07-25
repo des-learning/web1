@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="app">
+    <judul value="Hello World"></judul>
+    <judul value="Bye World"></judul>
+    <judul-a><p>Testing vuejs component</p></judul-a>
+    <counter-button skip="1"></counter-button>
+    <counter-button skip="3"></counter-button>
+    <my-table v-bind:columns="columns" v-bind:rows="rows"></my-table>
+    <my-table v-bind:columns="['nama', 'nilai']"
+              v-bind:rows="[{nama: 'Budi', nilai: 90}, {nama: 'Agus', nilai: 70}]"></my-table>
+  </div>
+
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript" src="components.js"></script>
+  <script type="text/javascript">
+    // global registration
+    Vue.component('judul', {
+      props: ['value'],
+      template: '<h1>{{value}}</h1>'
+    })
+
+    // local registration
+    var judul1 = {
+      template: '<h1><slot></slot></h1>'
+    }
+
+    Vue.component('counter-button', {
+      template: '<button v-on:click="click"><judul v-bind:value="counter"></judul></button>',
+      props: ['skip'],
+      data: function() {
+        return {
+         counter: 0
+        }
+      },
+      methods: {
+        click: function(event) {
+          this.counter+= parseInt(this.skip)
+        }
+      }
+    })
+
+    var app = new Vue({
+      el: '#app',
+      components: {
+        'judul-a': judul1
+      },
+      data: {
+        columns: ['nama', 'alamat'],
+        rows: [{nama: 'Budi', alamat: 'Jl. Asia'},
+               {nama: 'Agus', alamat: 'Jl. Pandu'},
+               {nama: 'Iwan', alamat: 'Jl. Thamrin'}]
+      }
+    })
+  </script>
+</body>
+</html>
