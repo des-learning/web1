@@ -10,38 +10,12 @@
   <script type="text/javascript" src="vue-router.js"></script>
   <script type="text/javascript" src="vuex.js"></script>
 
+  <script type="text/javascript" src="home.js"></script>
+  <script type="text/javascript" src="addnew.js"></script>
   <script type="text/javascript">
-    // components
-    const Home = {
-      template: `
-      <div>
-        <h1>Contacts</h1>
-        <input type="text" v-model="alamat" placeholder="Filter by alamat">
-        <table>
-          <tr><th>Nama</th><th>Alamat</th></tr>
-          <tr v-for="contact in contacts" v-key="contact.id">
-            <td>{{contact.nama}}</td><td>{{contact.alamat}}</td>
-          </tr>
-        </table>
-      </div>
-      `,
-      data: () => {
-        return {
-          alamat: ''
-        }
-      },
-      computed: {
-        contacts: function() {
-          if (this.alamat === '')
-            return this.$store.getters.allContacts
-          else
-            return this.$store.getters.contactsByAlamat(this.alamat)
-        }
-      }
-    }
-
     // routes
-    const routes = [{name: 'home', path: '/', component: Home}]
+    const routes = [{name: 'home', path: '/', component: Home},
+                    {name: 'add_new', path: '/new', component: AddNewContact}]
     const router = new VueRouter({ routes })
 
     // state
@@ -56,6 +30,15 @@
         allContacts: (state) => state.contacts,
         contactsByAlamat: (state) => (alamat) =>
             state.contacts.filter(x => x.alamat.includes(alamat))
+      },
+      mutations: {
+        addContact: (state, contact) => {
+          state.contacts.push(Object.assign(contact, {id: state.sequence}))
+          state.sequence++
+        }
+      },
+      actions: {
+        addContact: (context, contact) => context.commit('addContact', contact)
       }
     })
 
@@ -69,6 +52,7 @@
             <div style="flex: 1 1 30%">
               <ul>
                 <li><router-link :to="{name: 'home'}">Home</router-link></li>
+                <li><router-link :to="{name: 'add_new'}">Add New</router-link></li>
               </ul>
             </div>
             <div style="flex: 2 1 auto">
