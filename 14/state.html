@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript" src="vue-router.js"></script>
+  <script type="text/javascript" src="vuex.js"></script>
+
+  <script type="text/javascript">
+    const Home = {
+      template: `
+      <h1>Hello World</h1>
+      `
+    }
+
+    const routes = [{name: 'home', path: '/', component: Home}]
+    const router = new VueRouter({ routes })
+
+    const app = new Vue({
+      el: '#app',
+      template: `
+        <div>
+          <h1>Home</h1>
+          <div style="display: flex; flex-direction: row">
+            <div style="flex: 1 1 30%">
+              <ul>
+                <li><router-link :to="{name: 'home'}">Home</router-link></li>
+              </ul>
+            </div>
+            <div style="flex: 2 1 auto">
+              <router-view></router-view>
+            </div>
+          </div>
+        </div>
+      `,
+      router
+    })
+  </script>
+</body>
+</html>
