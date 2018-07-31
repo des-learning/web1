@@ -11,15 +11,42 @@
   <script type="text/javascript" src="vuex.js"></script>
 
   <script type="text/javascript">
+    // components
     const Home = {
       template: `
-      <h1>Hello World</h1>
-      `
+      <div>
+        <h1>Contacts</h1>
+        <table>
+          <tr><th>Nama</th><th>Alamat</th></tr>
+          <tr v-for="contact in contacts" v-key="contact.id">
+            <td>{{contact.nama}}</td><td>{{contact.alamat}}</td>
+          </tr>
+        </table>
+      </div>
+      `,
+      computed: {
+        contacts: function() { return this.$store.getters.allContacts }
+      }
     }
 
+    // routes
     const routes = [{name: 'home', path: '/', component: Home}]
     const router = new VueRouter({ routes })
 
+    // state
+    const store = new Vuex.Store({
+      state: {
+        contacts: [{id: 0, nama: 'Budi', alamat: 'Jl. Thamrin'},
+                   {id: 1, nama: 'Susi', alamat: 'Jl. Pandu'},
+                   {id: 2, nama: 'Rudi', alamat: 'Jl. Thamrin'}],
+        sequence: 3
+      },
+      getters: {
+        allContacts: (state) => state.contacts
+      }
+    })
+
+    // vue application
     const app = new Vue({
       el: '#app',
       template: `
@@ -37,7 +64,8 @@
           </div>
         </div>
       `,
-      router
+      router,
+      store
     })
   </script>
 </body>
