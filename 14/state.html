@@ -16,6 +16,7 @@
       template: `
       <div>
         <h1>Contacts</h1>
+        <input type="text" v-model="alamat" placeholder="Filter by alamat">
         <table>
           <tr><th>Nama</th><th>Alamat</th></tr>
           <tr v-for="contact in contacts" v-key="contact.id">
@@ -24,8 +25,18 @@
         </table>
       </div>
       `,
+      data: () => {
+        return {
+          alamat: ''
+        }
+      },
       computed: {
-        contacts: function() { return this.$store.getters.allContacts }
+        contacts: function() {
+          if (this.alamat === '')
+            return this.$store.getters.allContacts
+          else
+            return this.$store.getters.contactsByAlamat(this.alamat)
+        }
       }
     }
 
@@ -42,7 +53,9 @@
         sequence: 3
       },
       getters: {
-        allContacts: (state) => state.contacts
+        allContacts: (state) => state.contacts,
+        contactsByAlamat: (state) => (alamat) =>
+            state.contacts.filter(x => x.alamat.includes(alamat))
       }
     })
 
