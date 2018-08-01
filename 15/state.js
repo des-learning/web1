@@ -21,6 +21,13 @@ const store = new Vuex.Store({
     },
     todoList: (context) => {
       return fetch('http://178.128.222.9:8080/todo/' + context.state.username)
+    },
+    newTodo: (context, data) => {
+      return fetch('http://178.128.222.9:8080/todo/' + context.state.username,
+          {
+            method: 'POST',
+            body: JSON.stringify(data)
+          })
     }
   }
 })

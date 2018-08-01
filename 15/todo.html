@@ -12,6 +12,7 @@
   <script type="text/javascript" src="login.js"></script>
   <script type="text/javascript" src="logout.js"></script>
   <script type="text/javascript" src="todoList.js"></script>
+  <script type="text/javascript" src="newtodo.js"></script>
   <script type="text/javascript" src="router.js"></script>
   <script type="text/javascript" src="state.js"></script>
   <script type="text/javascript">
@@ -24,6 +25,7 @@
           <div style="flex: 1 1 30%">
             <ul v-if="isLoggedIn">
               <li><router-link :to="{name: 'todoList'}">Todo</router-link></li>
+              <li><router-link :to="{name: 'newTodo'}">New Todo</router-link></li>
               <li><router-link :to="{name: 'logout'}">Logout</router-link></li>
             </ul>
           </div>
