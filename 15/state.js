@@ -1,3 +1,5 @@
+const host = 'http://web1.desdulianto.com'
+
 const store = new Vuex.Store({
   state: {
     username: ''
@@ -20,12 +22,11 @@ const store = new Vuex.Store({
       context.commit('logout')
     },
     todoList: (context) => {
-      return fetch('http://178.128.222.9:8080/todo/' + context.state.username)
+      return fetch(host + context.state.username)
     },
     newTodo: (context, data) => {
-      return fetch('http://178.128.222.9:8080/todo/' + context.state.username,
-          {
-            method: 'POST',
+      return fetch(host + context.state.username,
+          {method: 'POST',
             body: JSON.stringify(data)
           })
     }
