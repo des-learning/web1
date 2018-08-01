@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+</head>
+<body>
+  <div id="app"></div>
+  <script type="text/javascript" src="vue.js"></script>
+  <script type="text/javascript" src="vue-router.js"></script>
+  <script type="text/javascript" src="vuex.js"></script>
+  <script type="text/javascript" src="login.js"></script>
+  <script type="text/javascript" src="logout.js"></script>
+  <script type="text/javascript" src="todoList.js"></script>
+  <script type="text/javascript" src="router.js"></script>
+  <script type="text/javascript" src="state.js"></script>
+  <script type="text/javascript">
+    const app = new Vue({
+      el: '#app',
+      template: `
+      <div>
+        <h1>Todo Application</h1>
+        <div style="display: flex; flex-direction: row">
+          <div style="flex: 1 1 30%">
+            <ul v-if="isLoggedIn">
+              <li><router-link :to="{name: 'todoList'}">Todo</router-link></li>
+              <li><router-link :to="{name: 'logout'}">Logout</router-link></li>
+            </ul>
+          </div>
+          <div style="flex: 2 1 auto">
+            <router-view></router-view>
+          </div>
+        </div>
+      </div>
+      `,
+      router,
+      store,
+      computed: {
+        isLoggedIn: function () {
+          return this.$store.getters.isLoggedIn
+        }
+      },
+      mounted () {
+        if (!this.isLoggedIn) {
+          this.$router.push({name: 'login'})
+        }
+      }
+    })
+  </script>
+</body>
+</html>
