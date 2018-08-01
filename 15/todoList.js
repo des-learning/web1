@@ -2,8 +2,13 @@ const TodoList = {
   template: `
   <div>
     <h1>Todo List</h1>
+    <button @click="refresh">Refresh</button>
+    <div>
+      <button @click="allTodos">All Todo(s)</button>
+      <button @click="finishedTodos">Finished Todo(s)</button>
+      <button @click="unfinishedTodos">Unfinished Todo(s)</button>
+    </div>
     <table>
-      <button @click="refresh">Refresh</button>
       <tr><th>Description</th><th>Status</th></tr>
       <tr v-for="todo in todos">
         <td>{{todo.description}}</td>
@@ -14,7 +19,16 @@ const TodoList = {
   `,
   data: function() {
     return {
-      todos: []
+      todos: [],
+      finished: null,
+    }
+  },
+  computed: {
+    filteredTodos: function () {
+      if (this.finished === null)
+        return this.todos
+      else
+        return this.todos.filter(todo => todo.finished === this.finished)
     }
   },
   methods: {
@@ -23,7 +37,10 @@ const TodoList = {
           .then(response => response.json())
           .then(json => { this.todos = json })
           .catch(err => alert(error))
-    }
+    },
+    allTodos: function () { this.finished = null },
+    finishedTodos: function () { this.finished = true },
+    unfinishedTodos: function () { this.finished = false }
   },
   mounted() {
     this.refresh()
