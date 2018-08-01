@@ -1,4 +1,4 @@
-const host = 'http://web1.desdulianto.com/todo/'
+const host = 'http://web1.desdulianto.com:8080/todo/'
 
 const store = new Vuex.Store({
   state: {
